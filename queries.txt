@@ -1,0 +1,83 @@
+// Query
+// {
+//     "query": "query { heroes { id, name, friends, status } }"
+// }
+
+ // Arguments
+ // {
+ //     "query": "query { hero(id: 1) { id, name, friends, status } }"
+ // }
+
+ // Meta Fields
+ // {
+ //     "query": "query { heroes { __typename id, name, friends, status } }"
+ // }
+
+
+ // Mutation
+ // {
+ //     "query": "mutation UpdateHero($id: Int = 1) { updateHero(id: $id) { name } }"
+ // }
+
+ // Aliases
+ // {
+ //     "query": "query { ironMan: hero(id: 1) { id, name, friends } captainAmerica: hero(id: 2) { id, name, friends } } "
+ // }
+
+ // Enum
+ // {
+ //     "query": "query { hero(status: ACTIVE) { id, name, status } }"
+ // }
+
+ // Union
+ // {
+ //     "query": "query GetCharacter($characterType: String) { characters(character_type: $characterType) { __typename ... on Hero { name } ... on Superhero { id, name } } }",
+ //     "variables": {
+ //         "characterType": "superhero"
+ //     },
+ //     "operation_name": "GetCharacter"
+ // }
+
+ // Fragments
+ // {
+ //     "query": "fragment comparisonFields on Hero { name, friends } query { ironMan: hero(id: 1) { ...comparisonFields } captainAmerica: hero(id: 2) { ...comparisonFields } }"
+ // }
+
+ // Inline Fragments
+ // {
+ //     "query": "query { hero(id: 1) { id ... on Hero { name } } }"
+ // }
+
+
+ // Operation Name, Variable and Default_Variable
+ // {
+ //   "query": "query GetHero($id: Int = 2) { hero(id: $id) { id, name, friends } }",
+ //   "variables": {
+ //     "id": 1
+ //   },
+ //   "operationName": "GetHero"
+ // }
+ // {
+ //   "query": "query GetHero($status: Status) { hero(status: $status) { id, name, friends, status } }",
+ //   "variables": {
+ //     "status": "ACTIVE"
+ //   },
+ //   "operationName": "GetHero"
+ // }
+
+ // Directives
+ // {
+ //   "query": "query GetHero($id: Int = 2, $withFriends: Boolean!) { hero(id: $id) { id, name, friends @include(if: $withFriends) } }",
+ //   "variables": {
+ //     "id": 1,
+ //     "withFriends": true
+ //   },
+ //   "operationName": "GetHero"
+ // }
+
+
+ // Introspection
+ // {
+ //     // "query": "{ __schema { types { name } } }"
+ //     "query": "{ __type(name: \"Hero\") { name fields { name type { name kind } } } }"
+ // }
